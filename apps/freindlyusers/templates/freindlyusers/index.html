@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <form class="" action="{% url 'createUser' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name = "first_name">
+    <input type="text" name = "last_name">
+    <input type="submit" value = "add user">
+  </form>
+
+  <form class="" action="{% url 'createFriend' %}" method="post">
+    {% csrf_token %}
+    <select name="f1">
+      {% for user in users %}
+      <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+      {% endfor %}
+    </select>
+    <select name="f2">
+      {% for user in users %}
+      <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value = "add friendship">
+  </form>
+
+  {% for user in users %}
+    <p><a href="{%url 'showUser' id=user.id %}"> {{user.first_name}} {{user.last_name}} </a></p>
+  {% endfor %}
+
+
+</body>
+</html>

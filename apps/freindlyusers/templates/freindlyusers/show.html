@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Welcome: {{user.first_name}} {{user.last_name}} </h1>
+  Friends whom you've friended:
+  {% for friend in user.f1.all %}
+    <p>Hi {{friend.user2.first_name}} </p>
+  {% endfor %}
+  People who have friended you:
+  {% for friend in user.f2.all %}
+    <p>Stalkers name is: {{friend.user1.first_name}} </p>
+  {% endfor %}
+
+</body>
+</html>
